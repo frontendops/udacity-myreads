@@ -13,7 +13,7 @@ class Books extends Component {
                                   this.props.changeShelf(
                                       this.props.book, e.target.value
                                   )}
-                                  value = {this.props.book.shelf}
+                                  value = {this.props.currentShelf}
                                   >
 
                                 <option value="move" disabled>Move to...</option>
