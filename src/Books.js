@@ -2,19 +2,18 @@ import React, { Component } from 'react';
 
 class Books extends Component {
   render() {
-      let fetchedThumbnail = this.props.books.imageLinks ? this.props.books.imageLinks.thumbnail : '';
+      let fetchedThumbnail = this.props.book.imageLinks ? this.props.book.imageLinks.thumbnail : '';
    	return(
       	<div className="book">
                           <div className="book-top">
                               <div className="book-cover" style={{ width: 128, height: 193,
                                    backgroundImage: `url("${fetchedThumbnail}")` }}></div>
                             <div className="book-shelf-changer">
-
                               <select onChange={(e) =>
                                   this.props.changeShelf(
-                                      this.props.books, e.target.value
+                                      this.props.book, e.target.value
                                   )}
-                                  value = {this.props.books.shelf}
+                                  value = {this.props.book.shelf}
                                   >
 
                                 <option value="move" disabled>Move to...</option>
@@ -25,8 +24,8 @@ class Books extends Component {
                               </select>
                             </div>
                           </div>
-                          <div className="book-title">{this.props.books.title}</div>
-                          <div className="book-authors">{this.props.books.authors}</div>
+                          <div className="book-title">{this.props.book.title}</div>
+                          <div className="book-authors">{this.props.book.authors}</div>
                         </div>
       );
   }

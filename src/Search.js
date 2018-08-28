@@ -5,8 +5,8 @@ import * as BooksAPI from './BooksAPI'
 
 class Search extends Component {
     state = {
-        searchedBooks : [],
-        query : ''
+        query: '',
+        searchedBooks: []
     }
 
     updateInput = (query) => {
@@ -41,7 +41,7 @@ class Search extends Component {
                 }
                 <input type="text" placeholder="Search by title or author"
                 value={this.state.query}
-                onChange={e => this.updateInput(e.target.value)}
+                onChange={(e) => this.updateInput(e.target.value)}
                 />
 
               </div>
@@ -50,10 +50,10 @@ class Search extends Component {
             <div className="search-books-results">
               <ol className="books-grid">
 
-              {this.state.searchedBooks.map(searchedBooks => (
-                      <li key={searchedBooks.id}>
+              {this.state.searchedBooks.map(searchedBook => (
+                      <li key={searchedBook.id}>
                       <Books
-                      searchedBooks = {searchedBooks}
+                      books = {searchedBook}
                       />
                       </li>
                   ))
