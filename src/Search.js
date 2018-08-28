@@ -10,24 +10,27 @@ class Search extends Component {
     }
 
     updateInput = (query) => {
-        this.setState({ query: query })
+        this.setState({
+            query: query
+        })
         this.renderSearchedBooks(query);
     }
 
     renderSearchedBooks = (query) => {
         if (query) {
-            BooksAPI.search(query)
-            .then((searchedBooks) => {
+            BooksAPI.search(query).then((searchedBooks) => {
                 if (searchedBooks.error) {
                     this.setState({ searchedBooks: [] });
                 } else {
-                this.setState({ searchedBooks : searchedBooks })
-            }
-        })
+                    this.setState({ searchedBooks: searchedBooks })
+                }
+              })
             } else {
-            this.setState({ searchedBooks : [] });
+                this.setState({ searchedBooks: [] });
         }
     }
+
+
 
   render() {
    	return (
@@ -41,7 +44,7 @@ class Search extends Component {
                 }
                 <input type="text" placeholder="Search by title or author"
                 value={this.state.query}
-                onChange={(e) => this.updateInput(e.target.value)}
+                onChange={(event) => this.updateInput(event.target.value)}
                 />
 
               </div>
@@ -49,11 +52,11 @@ class Search extends Component {
             </div>
             <div className="search-books-results">
               <ol className="books-grid">
-
               {this.state.searchedBooks.map(searchedBook => (
                       <li key={searchedBook.id}>
                       <Books
-                      books = {searchedBook}
+                      book = {searchedBook}
+                      changeShelf={this.props.changeShelf}
                       />
                       </li>
                   ))
