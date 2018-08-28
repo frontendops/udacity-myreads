@@ -1,5 +1,5 @@
-import React from 'react'
-//import { Route } from 'react-router-dom'
+import React from 'react';
+import { Route } from 'react-router-dom';
 
 import Search from './Search.js';
 import MainPage from './MainPage.js';
@@ -35,10 +35,22 @@ class BooksApp extends React.Component {
   render() {
     return (
       <div className="app">
-      <MainPage books={this.state.books}
-        changeShelf={this.changeShelf}
-      />
-      <Search changeShelf={this.changeShelf}/>
+
+      <Route exact path="" render={() =>(
+          <MainPage
+            books={this.state.books}
+            changeShelf={this.changeShelf}
+          />
+      )} />
+
+      <Route path="/Search" render={() =>(
+          <Search
+            books={this.state.books}
+            changeShelf={this.changeShelf}
+          />
+      )} />
+
+
       </div>
     )
   }
