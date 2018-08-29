@@ -55,8 +55,13 @@ class Search extends Component {
               <ol className="books-grid">
               {this.state.searchedBooks.map(searchedBook => {
                   let shelfState = "none";
+
+                  this.props.books.map(book => (
+                      book.id === searchedBook.id ? shelfState = book.shelf : ''
+
+                    ));
                     return(
-                      <li key={searchedBook.author}>
+                      <li key={searchedBook.id}>
                       <Books
                       book = {searchedBook}
                       changeShelf={this.props.changeShelf}
